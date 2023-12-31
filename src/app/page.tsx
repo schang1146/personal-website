@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <DynamicThreeBox></DynamicThreeBox>
-      hello, world!
+      <p className="text-xl text-center">hello, world!</p>
     </>
   );
 }

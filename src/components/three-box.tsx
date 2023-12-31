@@ -46,5 +46,5 @@ export default function ThreeScene() {
     requestAnimationFrame(() => animate());
   }
 
-  return <div ref={containerRef}></div>;
+  return <div className="flex justify-center" ref={containerRef}></div>;
 }
