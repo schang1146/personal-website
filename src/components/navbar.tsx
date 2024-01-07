@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
-import { ThemeToggleOptions } from "./layout";
+import ThemeToggle, { ThemeToggleOptions } from "./theme-toggle";
 
 export default function Navbar({
   themeToggle,
@@ -15,33 +15,17 @@ export default function Navbar({
       <div>
         <Link href="/">&#60;sc&#47;&#62;</Link>
       </div>
-      <ul>
-        <li className="flex items-center [&>*]:ml-4">
-          <button
-            className={`${
-              themeToggle === "system" ? "bg-gray-300" : ""
-            } p-2 rounded-full dark:invert`}
-            onClick={() => setThemeToggle("system")}
-          >
-            <img src="/computer.svg" alt="Computer"></img>
-          </button>
-          <button
-            className={`${
-              themeToggle === "light" ? "bg-gray-300" : ""
-            } p-2 rounded-full dark:invert`}
-            onClick={() => setThemeToggle("light")}
-          >
-            <img src="/sun.svg" alt="Sun"></img>
-          </button>
-          <button
-            className={`${
-              themeToggle === "dark" ? "bg-gray-300" : ""
-            } p-2 rounded-full dark:invert`}
-            onClick={() => setThemeToggle("dark")}
-          >
-            <img src="/moon.svg" alt="Moon"></img>
-          </button>
+      <ul className="flex items-center [&>*]:ml-4">
+        <li>
+          <ThemeToggle
+            themeToggle={themeToggle}
+            setThemeToggle={setThemeToggle}
+          ></ThemeToggle>
+        </li>
+        <li>
           <Link href="/">home</Link>
+        </li>
+        <li>
           <Link
             href="/projects"
             className="pointer-events-none line-through text-gray-700"
