@@ -11,19 +11,25 @@ export type Theme = "light" | "dark";
 export type ThemeToggleOptions = "light" | "dark" | "system";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [themeToggle, setThemeToggle] = useState<ThemeToggleOptions>(
-    (typeof localStorage !== "undefined" &&
-      (localStorage.getItem("themeToggle") as ThemeToggleOptions)) ||
-      "system"
-  );
+  const [theme, setTheme] = useState<Theme>();
+  const [themeToggle, setThemeToggle] = useState<ThemeToggleOptions>();
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      setThemeToggle(
+        (localStorage.getItem("themeToggle") as ThemeToggleOptions) ?? "system"
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!themeToggle) {
+      return;
+    }
+
     localStorage.setItem("themeToggle", themeToggle);
     function mediaQueryDarkModeHandler(event: MediaQueryListEvent) {
-      if (themeToggle === "system") {
-        event.matches ? setTheme("dark") : setTheme("light");
-      }
+      event.matches ? setTheme("dark") : setTheme("light");
     }
 
     let mediaQueryDarkMode: MediaQueryList | null = null;
@@ -51,7 +57,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, [themeToggle]);
 
   return (
-    <html lang="en" className={theme}>
+    <html lang="en" className={theme ?? "dark"}>
       <body
         className={`${inter.className} min-h-screen flex flex-col mx-auto px-6 text-black dark:text-white bg-white dark:bg-black`}
       >

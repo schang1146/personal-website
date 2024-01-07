@@ -7,8 +7,8 @@ export default function Navbar({
   themeToggle,
   setThemeToggle,
 }: {
-  themeToggle: ThemeToggleOptions;
-  setThemeToggle: Dispatch<SetStateAction<ThemeToggleOptions>>;
+  themeToggle: ThemeToggleOptions | undefined;
+  setThemeToggle: Dispatch<SetStateAction<ThemeToggleOptions | undefined>>;
 }) {
   return (
     <nav className="flex items-center justify-between py-4">
