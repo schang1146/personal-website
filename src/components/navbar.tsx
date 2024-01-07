@@ -1,11 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
 import { ThemeToggleOptions } from "./layout";
 
 export default function Navbar({
+  themeToggle,
   setThemeToggle,
 }: {
+  themeToggle: ThemeToggleOptions;
   setThemeToggle: Dispatch<SetStateAction<ThemeToggleOptions>>;
 }) {
   return (
@@ -14,10 +17,31 @@ export default function Navbar({
         <Link href="/">&#60;sc&#47;&#62;</Link>
       </div>
       <ul>
-        <li className="[&>*]:ml-4">
-          <button onClick={() => setThemeToggle("system")}>system</button>
-          <button onClick={() => setThemeToggle("light")}>light</button>
-          <button onClick={() => setThemeToggle("dark")}>dark</button>
+        <li className="flex items-center [&>*]:ml-4">
+          <button
+            className={`${
+              themeToggle === "system" ? "bg-gray-300" : ""
+            } p-2 rounded-full dark:invert`}
+            onClick={() => setThemeToggle("system")}
+          >
+            <img src="/computer.svg" alt="Computer"></img>
+          </button>
+          <button
+            className={`${
+              themeToggle === "light" ? "bg-gray-300" : ""
+            } p-2 rounded-full dark:invert`}
+            onClick={() => setThemeToggle("light")}
+          >
+            <img src="/sun.svg" alt="Sun"></img>
+          </button>
+          <button
+            className={`${
+              themeToggle === "dark" ? "bg-gray-300" : ""
+            } p-2 rounded-full dark:invert`}
+            onClick={() => setThemeToggle("dark")}
+          >
+            <img src="/moon.svg" alt="Moon"></img>
+          </button>
           <Link href="/">home</Link>
           <Link
             href="/projects"

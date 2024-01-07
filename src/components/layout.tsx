@@ -55,7 +55,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body
         className={`${inter.className} min-h-screen flex flex-col mx-auto px-6 text-black dark:text-white bg-white dark:bg-black`}
       >
-        <Navbar setThemeToggle={setThemeToggle}></Navbar>
+        <Navbar
+          themeToggle={themeToggle}
+          setThemeToggle={setThemeToggle}
+        ></Navbar>
         <main className="">{children}</main>
       </body>
     </html>
