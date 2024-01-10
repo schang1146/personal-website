@@ -15,7 +15,7 @@ export default function Navbar({
       <div>
         <Link href="/">&#60;sc&#47;&#62;</Link>
       </div>
-      <ul className="flex items-center [&>*]:ml-4">
+      <ul className="flex items-center gap-2">
         <li>
           <ThemeToggle
             themeToggle={themeToggle}
