@@ -15,10 +15,7 @@ export default function ThreeScene() {
   const fpsInterval = 1000 / targetFPS;
   let lastTime = 0;
 
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight
-  );
+  const camera = new THREE.PerspectiveCamera(75);
   const renderer = new THREE.WebGLRenderer({ alpha: true });
   const scene = new THREE.Scene();
 
@@ -33,23 +30,32 @@ export default function ThreeScene() {
   );
 
   useEffect(() => {
+    window.addEventListener("resize", onWindowResize);
+
     if (
       typeof window !== "undefined" &&
       boxRef.current?.children.length === 0
     ) {
+      boxRef.current?.appendChild(renderer.domElement);
+
       scene.add(cube);
       scene.add(line);
 
+      camera.aspect = (boxRef.current!.clientWidth * 2) / window.innerHeight;
+      camera.updateProjectionMatrix();
+
       camera.position.z = 2;
-      renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+      renderer.setSize(boxRef.current!.clientWidth, window.innerHeight / 2);
 
       requestAnimationFrame((t) => {
         lastTime = t;
         animate(t);
       });
-
-      boxRef.current?.appendChild(renderer.domElement);
     }
+
+    return () => {
+      window.removeEventListener("resize", onWindowResize);
+    };
   }, []);
 
   function animate(timestamp: number) {
@@ -83,9 +89,16 @@ export default function ThreeScene() {
     requestAnimationFrame((t) => animate(t));
   }
 
+  function onWindowResize() {
+    camera.aspect = (boxRef.current!.clientWidth * 2) / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(boxRef.current!.clientWidth, window.innerHeight / 2);
+  }
+
   return (
     <div className="flex flex-col items-start">
-      <div className="mx-auto" ref={boxRef}></div>
+      <div className="mx-auto w-full" ref={boxRef}></div>
       <div
         className="origin-left -rotate-90 text-xs text-gray-700"
         ref={fpsRef}
