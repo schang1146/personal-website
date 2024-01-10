@@ -4,11 +4,9 @@ import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 
 import Navbar from "./navbar";
+import { Theme, ThemeToggleOptions } from "./theme-toggle";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export type Theme = "light" | "dark";
-export type ThemeToggleOptions = "light" | "dark" | "system";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>();
