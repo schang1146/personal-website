@@ -11,7 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "next": "14.1.0",
+    "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
     "three": "^0.160.0"
@@ -34,7 +34,7 @@
     "chromatic": "^10.2.0",
     "css-loader": "^6.8.1",
     "eslint": "^8",
-    "eslint-config-next": "14.1.0",
+    "eslint-config-next": "14.2.3",
     "eslint-plugin-storybook": "^0.6.15",
     "postcss": "^8",
     "postcss-loader": "^8.0.0",
