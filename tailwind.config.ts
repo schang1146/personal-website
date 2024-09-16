@@ -8,5 +8,13 @@ const config: Config = {
   ],
   darkMode: "class",
   plugins: [],
+  theme: {
+    extend: {
+      colors: {
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+      },
+    },
+  },
 };
 export default config;

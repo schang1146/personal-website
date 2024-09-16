@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import Navbar from "./navbar";
 import { Theme, ThemeToggleOptions } from "./theme-toggle";
+import Footer from "./footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -64,6 +65,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           setThemeToggle={setThemeToggle}
         ></Navbar>
         <main className="">{children}</main>
+        <Footer></Footer>
       </body>
     </html>
   );
