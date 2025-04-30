@@ -14,6 +14,7 @@ export default function Navbar({
     <nav className="flex items-center justify-between py-4">
       <div>
         <Link href="/">&#60;sc&#47;&#62;</Link>
+        <input placeholder="Test Input"></input>
       </div>
       <ul className="flex items-center gap-4">
         <li>

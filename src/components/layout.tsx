@@ -35,11 +35,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
     if (themeToggle === "dark") {
       setTheme("dark");
+      document.documentElement.setAttribute("data-theme", "dark");
     }
     if (themeToggle === "light") {
       setTheme("light");
+      document.documentElement.setAttribute("data-theme", "light");
     }
     if (themeToggle === "system") {
+      document.documentElement.removeAttribute("data-theme");
       mediaQueryDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
       mediaQueryDarkMode.matches ? setTheme("dark") : setTheme("light");
       mediaQueryDarkMode.addEventListener("change", mediaQueryDarkModeHandler);
@@ -58,7 +61,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={theme ?? "dark"}>
       <body
-        className={`${inter.className} min-h-screen flex flex-col mx-auto px-6 text-black dark:text-white bg-white dark:bg-black`}
+        className={`${inter.className} min-h-screen flex flex-col mx-auto px-6`}
       >
         <Navbar
           themeToggle={themeToggle}

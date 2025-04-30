@@ -3,11 +3,32 @@
 @tailwind utilities;
 
 :root {
+    --color-primary: rgb(0 0 0);
+    --color-secondary: rgb(255 255 255);
+
+    @media (prefers-color-scheme: dark) {
+        --color-primary: rgb(255 255 255);
+        --color-secondary: rgb(0 0 0);
+    }
+}
+
+html {
+    color-scheme: dark light;
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
     --color-primary: rgb(255 255 255);
     --color-secondary: rgb(0 0 0);
+}
 
+[data-theme="light"] {
+    color-scheme: light;
+    --color-primary: rgb(0 0 0);
+    --color-secondary: rgb(255 255 255);
+}
 
-    /* font color */
-    --fc-primary: 
-    --fc-secondary: 
+body {
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
 }
