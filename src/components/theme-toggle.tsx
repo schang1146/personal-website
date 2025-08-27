@@ -15,7 +15,7 @@ export default function ThemeToggle({
       <button
         className={`${
           themeToggle === "system" ? "bg-gray-300" : ""
-        } p-2 rounded-full dark:invert`}
+        } p-2 rounded-full`}
         onClick={() => setThemeToggle("system")}
       >
         <img src="/computer.svg" alt="Computer"></img>
@@ -23,7 +23,7 @@ export default function ThemeToggle({
       <button
         className={`${
           themeToggle === "light" ? "bg-gray-300" : ""
-        } p-2 rounded-full dark:invert`}
+        } p-2 rounded-full`}
         onClick={() => setThemeToggle("light")}
       >
         <img src="/sun.svg" alt="Sun"></img>
@@ -31,7 +31,7 @@ export default function ThemeToggle({
       <button
         className={`${
           themeToggle === "dark" ? "bg-gray-300" : ""
-        } p-2 rounded-full dark:invert`}
+        } p-2 rounded-full`}
         onClick={() => setThemeToggle("dark")}
       >
         <img src="/moon.svg" alt="Moon"></img>
