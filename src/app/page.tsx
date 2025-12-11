@@ -1,13 +1,9 @@
-import dynamic from "next/dynamic";
-
-const DynamicThreeBox = dynamic(() => import("../components/three-box"), {
-  ssr: false,
-});
+import ThreeScene from '@/components/three-box'
 
 export default function Home() {
   return (
     <>
-      <DynamicThreeBox></DynamicThreeBox>
+      <ThreeScene></ThreeScene>
       <p className="text-xl text-center">hello, world!</p>
     </>
   );
