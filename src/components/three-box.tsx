@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import * as THREE from "three";
 
@@ -15,27 +15,39 @@ export default function ThreeScene() {
   const fpsInterval = 1000 / targetFPS;
   let lastTime = 0;
 
-  const camera = new THREE.PerspectiveCamera(75);
-  const renderer = new THREE.WebGLRenderer({ alpha: true });
-  const scene = new THREE.Scene();
+  let camera: THREE.PerspectiveCamera;
+  let renderer: THREE.WebGLRenderer;
+  let scene: THREE.Scene;
 
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshBasicMaterial({ color: 0x999999 });
-  const cube = new THREE.Mesh(geometry, material);
+  let geometry: THREE.BoxGeometry;
+  let material: THREE.MeshBasicMaterial;
+  let cube: THREE.Mesh;
 
-  const edges = new THREE.EdgesGeometry(geometry);
-  const line = new THREE.LineSegments(
-    edges,
-    new THREE.LineBasicMaterial({ color: 0x000000 })
-  );
+  let edges: THREE.EdgesGeometry;
+  let line: THREE.LineSegments;
 
   useEffect(() => {
     window.addEventListener("resize", onWindowResize);
 
     if (
       typeof window !== "undefined" &&
-      boxRef.current?.children.length === 0
+      boxRef.current?.children.length === 0 &&
+      document
     ) {
+      camera = new THREE.PerspectiveCamera(75);
+      renderer = new THREE.WebGLRenderer({ alpha: true });
+      scene = new THREE.Scene();
+
+      geometry = new THREE.BoxGeometry(1, 1, 1);
+      material = new THREE.MeshBasicMaterial({ color: 0x999999 });
+      cube = new THREE.Mesh(geometry, material);
+
+      edges = new THREE.EdgesGeometry(geometry);
+      line = new THREE.LineSegments(
+        edges,
+        new THREE.LineBasicMaterial({ color: 0x000000 })
+      );
+
       boxRef.current?.appendChild(renderer.domElement);
 
       scene.add(cube);
